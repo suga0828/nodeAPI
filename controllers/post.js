@@ -1,14 +1,12 @@
 import Post from '../models/post.js';
 
 export const getPosts = (req, res) => {
-  const data = {
-    posts: [
-      { title: 'First Post' },
-      { title: 'Second Post' },
-      { title: 'Third Post' }
-    ]
-  };
-  res.json(data);
+  Post.find()
+    .select('_id title body')
+    .then(posts => {
+      res.json({ posts });
+    })
+    .catch(err => console.log(err));
 };
 
 export const createPost = (req, res) => {
@@ -19,7 +17,7 @@ export const createPost = (req, res) => {
         error: err
       });
     }
-    res.status(200).json({
+    res.json({
       post: result
     });
   });
