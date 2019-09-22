@@ -1,6 +1,7 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
+import bodyParser from 'body-parser';
 
 // bring in routes
 import router from './routes/post.js';
@@ -28,6 +29,7 @@ mongoose.connection.on('error', err => {
 });
 
 app.use(morgan('dev'));
+app.use(bodyParser.json());
 app.use('/', router);
 
 app.listen(port, () => console.log(`Node.js API listening in port ${port}`));
