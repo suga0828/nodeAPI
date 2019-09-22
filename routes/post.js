@@ -1,3 +1,8 @@
-export const getPosts = (req, res) => {
-  res.send('Hellow World from Node.js');
-};
+import express from 'express';
+import getPosts from '../controllers/post.js';
+
+const router = express.Router();
+
+router.get('/', getPosts);
+
+export default router;
