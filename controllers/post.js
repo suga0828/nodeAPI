@@ -1,5 +1,12 @@
 const getPosts = (req, res) => {
-  res.send('Hellow World from Node.js');
+  const data = {
+    posts: [
+      { title: 'First Post' },
+      { title: 'Second Post' },
+      { title: 'Third Post' }
+    ]
+  };
+  res.json(data);
 };
 
 export default getPosts;
